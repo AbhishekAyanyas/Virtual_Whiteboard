@@ -1,0 +1,200 @@
+<!DOCTYPE{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Whiteboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url("{% static 'pexels-pixabay-531880.jpg' %}") no-repeat center center / cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #000;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.75);
+      padding: 30px 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 3px #ccc;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 18px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Virtual Whiteboard</h1>
+    <button onclick="startDrawing()">Start Drawing</button>
+  </div>
+
+  <script>
+    function startDrawing() {
+      fetch('/start')
+        .then(response => {
+          if (response.ok) {
+            alert('Whiteboard started!');
+          } else {
+            alert('Server responded but failed to start.');
+          }
+        })
+        .catch(error => alert('Failed to start the application.'));
+    }
+  </script>
+<!-- home.html -->
+<!-- <button onclick="window.location.href='/run_paint/'">Start Paint</button> -->
+<!-- <button onclick="window.location.href='/run_track/'">Start Tracking</button> -->
+<!-- <button onclick="window.location.href='/run_mask/'">Start Mask</button> -->
+
+</body>
+</html> 
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Whiteboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url("{% static 'pexels-pixabay-531880.jpg' %}") no-repeat center center / cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #000;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.75);
+      padding: 30px 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 3px #ccc;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 18px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+      margin: 10px 5px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #mask-window, #paint-window {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      background-color: #f0f0f0;
+    }
+
+    #mask-window {
+      background-color: #eee;
+    }
+
+    #paint-window {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Virtual Whiteboard</h1>
+    <button onclick="startDrawing()">Start Drawing</button>
+
+    Mask & Paint buttons 
+    <button onclick="showMaskWindow()">Show Mask</button>
+    <button onclick="showPaintWindow()">Show Paint</button>
+
+     Mask & Paint windows 
+    <div id="mask-window">
+      <p>This is the Mask Window.</p>
+    </div>
+
+    <div id="paint-window">
+      <p>This is the Paint Window.</p>
+    </div>
+  </div>
+
+  <script>
+    function startDrawing() {
+      fetch('/start')
+        .then(response => {
+          if (response.ok) {
+            alert('Whiteboard started!');
+          } else {
+            alert('Server responded but failed to start.');
+          }
+        })
+        .catch(error => alert('Failed to start the application.'));
+    }
+
+    function showMaskWindow() {
+      document.getElementById("mask-window").style.display = "block";
+      document.getElementById("paint-window").style.display = "none";
+    }
+
+    function showPaintWindow() {
+      document.getElementById("paint-window").style.display = "block";
+      document.getElementById("mask-window").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
+-->
